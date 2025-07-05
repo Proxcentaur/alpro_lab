@@ -1,3 +1,8 @@
+/**
+ * Create by Septia Dini Rahayu 
+ * NIM: 2802663931
+ */
+
 #include <stdio.h>
 #include <stdbool.h>
 #define MAX_INPUT_SIZE 3 // Define the maximum number of inputs
