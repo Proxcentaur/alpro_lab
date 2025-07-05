@@ -1,18 +1,23 @@
 #include <stdio.h>
 #include <stdbool.h>
+#define MAX_INPUT_SIZE 3 // Define the maximum number of inputs
 
 int main() {
-    const int SIZE = 3;
-    int numbers[SIZE];
-    int *ptr = numbers;  // Pointer to the element of the array
+    int numbers[MAX_INPUT_SIZE]; //Array to store user input number
+    int *ptr = numbers;  // Pointer to the first element of the array
 
     printf("Hello! You need to enter 3 round numbers \n");
 
-    for (int inputIndex = 0; inputIndex < SIZE; inputIndex++) {
+    /**
+     * Loop to get user input for 3 numbers
+     * The loop will continue until all 3 numbers are entered correctly
+     * It checks for valid input and ensures that the second and third numbers are not zero
+     */
+    for (int inputIndex = 0; inputIndex < MAX_INPUT_SIZE; inputIndex++) {
         printf("Enter value for number %d: ", inputIndex + 1);
         
         int result = scanf("%d", ptr + inputIndex); // Using pointer arithmetic to access the array elements
-        bool isInputNotNumber = result != 1;
+        bool isInputNotNumber = result != 1; //Check if the input is not a valid number
 
         /**
          * Check if the input is not a number
@@ -46,30 +51,36 @@ int main() {
     /**
      * Print the inputted number using pointer dereferencing
      */
-    for (int inputIdx=0; inputIdx < SIZE; inputIdx++) {
+    for (int inputIdx=0; inputIdx < MAX_INPUT_SIZE; inputIdx++) {
         int inputtedNumbers;
         inputtedNumbers = *(ptr + inputIdx); // Dereferencing the pointer to get the value
         
-        printf("%d", inputtedNumbers); // Print each number using pointer dereferencing
+        printf("%d", inputtedNumbers); // Print each number
         
-        if (inputIdx < SIZE - 1)
+        if (inputIdx < MAX_INPUT_SIZE - 1)
         {
-            printf(",");
+            printf(","); // Print comma after each number except the last one
         }
 
-        if(inputIdx == SIZE - 1) printf("\n");
+        if(inputIdx == MAX_INPUT_SIZE - 1) printf("\n"); //Print new line after the last number
     }
     
-    int firstInput = ptr[0];
-    int secondInput = ptr[1];
-    int thirdInput = ptr[2];
+    int firstInput = ptr[0]; // Accessing first input numbers using pointer arithmetic
+    int secondInput = ptr[1]; // Accessing second input numbers using pointer arithmetic
+    int thirdInput = ptr[2];//Accessing third input numbers using pointer arithmetic
     
+    /**
+     * Performing arithmetic operations on the input numbers
+     */
     int sum = firstInput + secondInput + thirdInput;
     int subtraction = firstInput - secondInput - thirdInput;
     int multiplication = firstInput * secondInput * thirdInput;
     float division = (float) firstInput / (float) secondInput / (float) thirdInput;
-    float average = (float)sum / SIZE;
+    float average = (float)sum / MAX_INPUT_SIZE;
 
+    /**
+     * Display the results of the arithmetic operations
+     */
     printf("The sum of the numbers is: %d\n", sum);
     printf("The subtraction of the numbers is: %d\n", subtraction);
     printf("The multiplication of the numbers is: %d\n", multiplication);
